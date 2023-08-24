@@ -39,6 +39,7 @@ body.light {
 body {
   background-color: var(--header-back);
   color: var(--header-back-sub);
+  overflow-x: hidden;
 }
 
 .poppins {

@@ -7,7 +7,7 @@ import Weather from "./Weather"
 export const Boxes = () => {
     return (
         <>
-            <div className="flex justify-center">
+            <div className="flex justify-center z-[50] relative">
                 <div className="w-full mt-[30px] 
                     xl:w-[1000px] m:w-[788px] md:w-[642px] 
                     md:flex flex-row md:flex-row md:gap-[25px] items-center gap-[10px]

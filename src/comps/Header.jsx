@@ -36,10 +36,8 @@ export const Header = () => {
 
                     <div className="flex items-center h-full gap-4">
                         <DarkModeButton />
-                        <button className="
-                        bg-[color:var(--header-back-sub)] text-[color:var(--header-back)] rounded-[50px] m-[4px] box-border h-[calc(100%-8px)]
-                        min-w-[120px]
-                        ">Hire me!</button>
+                        
+                        <button className="bg-[color:var(--header-back-sub)] text-[color:var(--header-back)] rounded-[20px] px-[20px] py-[10px] text-lg font-light transition-all duration-150 poppins">Resume</button>
                     </div>
 
 

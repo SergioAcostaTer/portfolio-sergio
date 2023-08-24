@@ -7,7 +7,7 @@ export const Welcome = () => {
     return (
         <>
             <div
-                className='relative flex justify-center'
+                className='relative flex justify-center z-[50]'
             >
                 <div className="background">
                     <img src='./looper-pattern.svg' alt="background" className="pattern" />
