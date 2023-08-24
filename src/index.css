@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  --header-back: #000;
+  --header-back-sub: #ffffff;
+  --header-back-opacity: #00000068;
+  --header-border: #2d234f;
+  --color80: #ffffff80;
+}
+
+body.light {
+  --header-back: #ffffff;
+  --header-back-sub: #000;
+  --header-back-opacity: #ffffff64;
+  --header-border: #2d234f;
+  --color80: #00000080;
+}
+
+body {
+  background-color: var(--header-back);
+  color: var(--header-back-sub);
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+}
+
+.background .pattern {
+  position: absolute;
+  bottom: -250px;
+  z-index: -1;
+}
+
+.background .blur {
+  width: 500px;
+  top: 300px;
+  position: absolute;
+  z-index: -1;
+}
+
+.background .blur2 {
+  width: 400px;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+  .background .pattern {
+    bottom: 0;
+  }
+}
+
+.background .black {
+  background: linear-gradient(
+    60deg,
+    var(--header-back) 0%,
+    var(--header-back) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  height: 87vh;
+  width: 100vw;
+}
+
+.switch {
+  --button-width: 2.2em;
+  --button-height: 1em;
+  --toggle-diameter: 1em;
+  --button-toggle-offset: calc(
+    (var(--button-height) - var(--toggle-diameter)) / 2
+  );
+  --toggle-shadow-offset: 10px;
+  --toggle-wider: 2.2em;
+  --color-grey: #b21eb2;
+  --color-green: #851a85;
+}
+
+.slider {
+  display: inline-block;
+  width: var(--button-width);
+  height: var(--button-height);
+  background-color: var(--color-grey);
+  border-radius: calc(var(--button-height) / 2);
+  position: relative;
+  transition: 0.1s all ease-in-out;
+}
+
+.slider::after {
+  content: "";
+  display: inline-block;
+  width: var(--toggle-diameter);
+  height: var(--toggle-diameter);
+  background-color: #fff;
+  border-radius: calc(var(--toggle-diameter) / 2);
+  position: absolute;
+  top: var(--button-toggle-offset);
+  transform: translateX(var(--button-toggle-offset));
+  box-shadow: var(--toggle-shadow-offset) 0
+    calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+  transition: 0.1s all ease-in-out;
+}
+
+.switch input[type="checkbox"]:checked + .slider {
+  background-color: var(--color-green);
+}
+
+.switch input[type="checkbox"]:checked + .slider::after {
+  transform: translateX(
+    calc(
+      var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)
+    )
+  );
+  box-shadow: calc(var(--toggle-shadow-offset) * -1) 0
+    calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+
+.switch input[type="checkbox"] {
+  display: none;
+}
+
+.switch input[type="checkbox"]:active + .slider::after {
+  width: var(--toggle-wider);
+}
+
+.switch input[type="checkbox"]:checked:active + .slider::after {
+  transform: translateX(
+    calc(
+      var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)
+    )
+  );
+}
+
+.bars {
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 300px;
+}
+
+.area {
+  /* background: #4e54c8;   */
+  /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
+  width: 100vw;
+  height: 87vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  right: 0;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 87vh;
+  overflow: hidden;
+  margin: 0;
+  z-index: -2;
+  padding: 0;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+  filter: blur(2px);
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+  filter: blur(3px);
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+  filter: blur(3px);
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+  filter: blur(1.5px);
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+  filter: blur(3px);
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+  filter: blur(1px);
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+  filter: blur(0.5px);
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+  filter: blur(2.5px);
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+  filter: blur(3px);
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+  filter: blur(0.3px);
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.static,
+.static div {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("./assets/noise.png");
+  animation: static 3s steps(5, end) infinite;
+  opacity: 0.1;
+  border-radius: 20px;
+}
+.static div {
+  background-size: 100px 100px;
+  animation-duration: 2.5s;
+}
+@keyframes static {
+  0% {
+    background-position: 0% 0%;
+  }
+  20% {
+    background-position: 25% 15%;
+  }
+  40% {
+    background-position: 50% 69%;
+  }
+  60% {
+    background-position: 33% 25%;
+  }
+  80% {
+    background-position: 72% 4%;
+  }
+  100% {
+    background-position: 80% 91%;
+  }
+}
+
+/*********************
+  SCAN LINES
+*********************/
+
+.scan,
+.scan:before,
+.scan:after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: hsla(0, 0%, 0%, 0.13);
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
+  animation: scan 12s linear infinite;
+}
+.scan:before,
+.scan:after {
+  content: "";
+  display: block;
+  height: 60%;
+}
+.scan:before {
+  top: -350%;
+}
+.scan:after {
+  top: -1100%;
+}
+@keyframes scan {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 250%;
+  }
+}
