@@ -3,10 +3,10 @@ const Box = ({ url, img, color }) => {
     return (
         <>
 
-            <a href={url} target="_blank" rel="noreferrer">
+            <a href={url} target="_blank" rel="noreferrer" className="aspect-square">
                 <div style={{
                     backgroundColor: color
-                }} className={`cursor-pointer w-[90px] h-[90px] md:w-[120px] md:h-[120px] rounded-[20px] transition-all duration-150 hover:scale-[1.04] flex items-center justify-center relative`}>
+                }} className={`cursor-pointer w-full h-full md:w-[90px] md:h-[90px] m:w-[120px] m:h-[120px] rounded-[20px] transition-all duration-150 hover:scale-[1.04] flex items-center justify-center relative`}>
                     <div className="static w-full h-full">
                         <div></div>
                     </div>

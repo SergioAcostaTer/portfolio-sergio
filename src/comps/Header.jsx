@@ -10,9 +10,9 @@ export const Header = () => {
     return (
         <>
             <header className="bg-[color:var(--header-back-opacity)] text-[color:var(--header-back-sub)] h-[64px]
-            flex items-center justify-center fixed 
+            flex items-center justify-center fixed
             w-full
-            z-[100] backdrop-filter backdrop-blur-[10px] left-0 right-0  transition-all duration-150
+            z-[100] backdrop-filter backdrop-blur-[10px] backdrop-saturate-150left-0 right-0  transition-all duration-150
             [@media(max-width:768px)]:hidden
 
             ">

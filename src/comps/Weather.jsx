@@ -4,7 +4,10 @@ import { getDiscordUser } from "../services/getDiscordUser"
 
 /* eslint-disable react/prop-types */
 const Weather = ({ latitude, longitude, place }) => {
-    const [weather, setWeather] = useState({})
+    const [weather, setWeather] = useState({
+        place: "Tenerife",
+        temperature: "__._"
+    })
     const [time, setTime] = useState(`${new Date().getHours()}:${new Date().getMinutes()}`)
 
     useEffect(() => {
@@ -32,7 +35,7 @@ const Weather = ({ latitude, longitude, place }) => {
             <div style={{
                 backgroundColor: weather.isDay ? "#0D66A8" : "#101630",
                 gridArea: "2 / 4 / 2 / 2"
-            }} className={`cursor-pointer h-full w-full  md:min-w-[200px] md:h-[120px] rounded-[20px] transition-all duration-150 hover:scale-[1.04] flex items-center justify-center relative`}>
+            }} className={`cursor-pointer h-full w-full md:max-w-[230px]  m:min-w-[200px] m:h-[120px] rounded-[20px] transition-all duration-150 hover:scale-[1.04] flex items-center justify-center relative`}>
                 <div className="static w-full h-full">
                     <div></div>
                 </div>

@@ -74,7 +74,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .background .pattern {
-    bottom: 0;
+    bottom: 400px;
   }
 }
 

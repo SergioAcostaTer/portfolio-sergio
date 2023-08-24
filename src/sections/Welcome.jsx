@@ -7,18 +7,20 @@ export const Welcome = () => {
     return (
         <>
             <div
-                className='relative'
+                className='relative flex justify-center'
             >
                 <div className="background">
                     <img src='./looper-pattern.svg' alt="background" className="pattern" />
                     <img src='./blue-purple-1.svg' alt="background" className="blur" />
                     <img src='./blue-purple-1.svg' alt="background" className="blur2" />
                 </div>
-                <div className='box-border pt-[90px] h-full flex px-[40px] md:px-[70px] lg:px-[130px] l:px-[200px]  xl:px-[300px] flex-col'>
+                <div className='box-border pt-[90px] h-full flex flex-col
+                    w
+                '>
 
                     <div className="w-full flex pt-[0px] md:pt-[25px]
                     items-center justify-center md:justify-between flex-col md:flex-row md:items-end
-                    
+                        xl:w-[1000px] m:w-[788px] md:w-[642px] 
                     ">
                         <div className="flex flex-col justify-end">
                             <h1 className={`${niceTextStyle}
