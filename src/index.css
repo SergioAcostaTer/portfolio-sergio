@@ -42,6 +42,25 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .poppins {
   font-family: "Poppins", sans-serif;
 }
@@ -373,4 +392,42 @@ body {
   100% {
     top: 250%;
   }
+}
+
+
+.span1 {
+  position: absolute;
+  z-index: 1;
+  top: -80px;
+}
+
+.span2 {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+}
+
+.span3 {
+  position: absolute;
+  z-index: 1;
+  top: 80px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.span1,
+.span2,
+.span3 {
+  left: -29px;
+  /* animation: floating 3s ease-in-out infinite; */
 }

@@ -17,7 +17,7 @@ export const DarkModeButton = () => {
 
     return (
         <div
-        className='flex items-center justify-between gap-2'
+        className='noselect flex items-center justify-between gap-2'
         >
             <p>Dark</p>
             <label className="switch">

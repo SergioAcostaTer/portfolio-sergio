@@ -18,7 +18,6 @@ const MouseShadow = () => {
         const y = e.clientY
         cont.current.style.left =`${x - (size/2)}px`
         cont.current.style.top = `${y - (size/2)}px`
-        console.log(x, y)
     }
 
     return (

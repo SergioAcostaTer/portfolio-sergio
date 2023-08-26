@@ -18,7 +18,7 @@ export const Header = () => {
             ">
                 <nav className="flex items-center justify-between h-full w-[85%] [@media(max-width:1300px)]:w-[100%] px-[20px]">
                     <div className='flex gap-[30px] items-center'>
-                        <Link to="/" className="text-2xl font-bold">Sergio Acosta <span
+                        <Link to="/" className="noselect text-2xl font-bold">Sergio Acosta <span
                             className={`${niceTextStyle}`}
                             style={{
                                 lineHeight: 0
@@ -26,18 +26,18 @@ export const Header = () => {
                         >.</span></Link>
 
                         <div className="grid grid-flow-col gap-[30px] items-center">
-                            <Link to="/about" className="text-lg font-light hover:font-normal transition-all duration-150">About</Link>
-                            <Link to="/projects" className="text-lg font-light hover:font-normal transition-all duration-150">Projects</Link>
-                            <Link to="/contact" className="text-lg font-light hover:font-normal transition-all duration-150">Contact</Link>
+                            <Link to="/about" className="noselect text-lg font-light hover:font-normal transition-all duration-150">About</Link>
+                            <Link to="/projects" className="noselect text-lg font-light hover:font-normal transition-all duration-150">Projects</Link>
+                            <Link to="/contact" className="noselect text-lg font-light hover:font-normal transition-all duration-150">Contact</Link>
                         </div>
 
-                       <Tag text="New something lol 🎉" />
+                       <Tag text="New portfolio 🎉" />
                     </div>
 
-                    <div className="flex items-center h-full gap-4">
+                    <div className="noselect flex items-center h-full gap-4">
                         <DarkModeButton />
                         
-                        <button className="bg-[color:var(--header-back-sub)] text-[color:var(--header-back)] rounded-[20px] px-[20px] py-[10px] text-lg font-light transition-all duration-150 poppins">Resume</button>
+                        <button className="noselect bg-[color:var(--header-back-sub)] text-[color:var(--header-back)] rounded-[20px] px-[20px] py-[10px] text-lg font-light transition-all duration-150 poppins">Resume</button>
                     </div>
 
 

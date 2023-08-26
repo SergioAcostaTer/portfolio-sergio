@@ -4,7 +4,7 @@ export default async function getWeather({latitude = "28.4682", longitude = "-16
     const date = new Date()
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=apparent_temperature,precipitation_probability,rain,cloudcover,is_day&forecast_days=1`
     const {data} = await axios.get(url)
-    const closestHour = date.getHours() + date.getMinutes() > 30 ? date.getHours() + 1 : date.getHours()
+    const closestHour = (date.getHours() + date.getMinutes() > 30 ? date.getHours() + 1 : date.getHours()) - 1
     const result = {
         place,
         temperature: data.hourly.apparent_temperature[closestHour],
