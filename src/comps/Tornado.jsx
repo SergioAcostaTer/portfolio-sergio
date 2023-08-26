@@ -61,9 +61,13 @@ const TornadoGroup = ({ number = 1, container, icons }) => {
     useEffect(() => {
         animate();
 
-        container.current.addEventListener('mouseleave', () => {
-            mouseX = 180;
-        });
+        if (window.innerWidth > 768) {
+            container.current.addEventListener('mouseleave', () => {
+                mouseX = 180;
+            });
+        }
+
+
     }, []);
 
     /*--------------------
