@@ -1,24 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef } from 'react';
 import Icon from './Icon';
 import { Icons } from '../consts/Icons';
 
-const TornadoGroup = ({ number = 1, container, icons }) => {
+const TornadoGroup = React.memo(({ number = 1, container, icons }) => {
     /*--------------------
    Vars
    --------------------*/
     let time = 0;
     let x = 0;
     let mouseX = 180;
+    let maxX = 0.15
     /*--------------------
     Options
     --------------------*/
+    const sizes = [65, 110]
+
     const opt = {
-        radius: number === 1 ? 70 : number === 2 ? 120 : 70,
+        radius: sizes[number === 2 ? 1 : 0],
         radiusY: 0.08,
-        maxSpeed: 0.05,
+        maxSpeed: 0.1,
         maxRotation: 50,
         minOpacity: .9,
-        spacer: ''
+        maxX: .12
     };
     /*--------------------
     Utils
@@ -33,9 +39,15 @@ const TornadoGroup = ({ number = 1, container, icons }) => {
     Animation
     --------------------*/
     const animate = () => {
-        console.log(mouseX); //always 754.5
         let iconsElements = document.querySelectorAll(`.span${number}`);
-        x = lerp(x, mouseX / container.current.offsetWidth, 0.1);
+        x = lerp(x, (mouseX - container.current.offsetLeft - container.current.offsetParent.offsetLeft) / container.current.offsetWidth, 0.1); 4
+        x = x > 0.5 + maxX ? 0.5 + maxX : x < 0.5 - maxX ? 0.5 - maxX : x
+
+
+        if (mouseX === 180) {
+            x = 0.52
+        }
+
         const rotation = -opt.maxRotation + x * opt.maxRotation * 2;
         const speed = (-opt.maxSpeed + x * opt.maxSpeed * 2);
         const modY = 1 + x * -2;
@@ -54,20 +66,25 @@ const TornadoGroup = ({ number = 1, container, icons }) => {
             i.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
         });
 
-        requestAnimationFrame(animate);
+
+        // requestAnimationFrame(animate); //3300
+
+        setTimeout(() => {
+            requestAnimationFrame(animate); //1800
+          }, 1000 / 100); 
     };
 
 
     useEffect(() => {
         animate();
+        const iconsElements = document.querySelectorAll(`.span${number}`);
 
-        if (window.innerWidth > 768) {
-            container.current.addEventListener('mouseleave', () => {
-                mouseX = 180;
+        container.current.addEventListener('mouseleave', () => {
+            iconsElements.forEach((i) => {
+                i.style.transition = 'transform 0.1s ease';
             });
-        }
-
-
+            mouseX = 180;
+        });
     }, []);
 
     /*--------------------
@@ -79,25 +96,18 @@ const TornadoGroup = ({ number = 1, container, icons }) => {
 
     useEffect(() => {
         container.current.addEventListener('mousemove', handleMouse);
-        container.current.addEventListener('touchstart', handleMouse);
-        container.current.addEventListener('touchmove', handleMouse);
-
         return () => {
             container.current.removeEventListener('mousemove', handleMouse);
-            container.current.removeEventListener('touchstart', handleMouse);
-            container.current.removeEventListener('touchmove', handleMouse);
         };
     }, []);
 
 
     return (
-        <div className="icons relative
-        mt-[-50px] 
-    ">
+        <div className={`icons relative mt-[-50px] ${number === 1 || number === 3 ? 'ml-[-0px]' : ""}`}>
             {
                 icons.map((i, ind) => {
                     return (
-                        <span key={ind} className={`span${number}`}>
+                        <span key={ind} className={`span${number} `}>
                             <Icon img={i.path} color={i.color} />
                         </span>
                     );
@@ -108,18 +118,19 @@ const TornadoGroup = ({ number = 1, container, icons }) => {
 
     );
 
-};
+});
 
 
 const Tornado = () => {
     const container = useRef(null);
 
     return (
-        <div ref={container} className='flex justify-center items-center relative z-[50] w-[350px] h-[255px]'
+        <div ref={container} className='flex justify-center items-center relative z-[50] w-[350px] h-[255px] cursor-pointer pt-[80px] md:pt-[0px]'
         >
-            <TornadoGroup number={1} container={container} icons={[...Icons].slice(0, 4)} />
-            <TornadoGroup number={2} container={container} icons={[...Icons].slice(4, 9)} />
-            <TornadoGroup number={3} container={container} icons={[...Icons].slice(9, 13)} />
+            <TornadoGroup number={1} container={container} icons={[...Icons].slice(0, 3)} />
+            <TornadoGroup number={2} container={container} icons={[...Icons].slice(3, 8)} />
+            <TornadoGroup number={3} container={container} icons={[...Icons].slice(8, 11)} />
+            <div className='absolute h-[120px] w-[120px] rounded-full bg-[#fff] floating'></div>
         </div>
     );
 };

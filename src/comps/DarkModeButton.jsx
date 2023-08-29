@@ -1,12 +1,7 @@
 //DarkModeButton.jsx
 
-import React from 'react';
 
-
-export const DarkModeButton = () => {
-    const [darkMode, setDarkMode] = React.useState(true);
-
-
+export const DarkModeButton = ({ setDarkMode, darkMode }) => {
     const handleClick = () => {
         // body and body.light are classes in public\index.html
         document.body.classList.toggle('dark');
@@ -17,7 +12,7 @@ export const DarkModeButton = () => {
 
     return (
         <div
-        className='noselect flex items-center justify-between gap-2'
+            className='noselect flex items-center justify-between gap-2'
         >
             <p>Dark</p>
             <label className="switch">

@@ -1,8 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div,
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 
 * {
   scroll-behavior: smooth;
@@ -26,6 +54,7 @@ body {
   --header-back-opacity: #00000068;
   --header-border: #2d234f;
   --color80: #ffffff80;
+  --text: #fff;
 }
 
 body.light {
@@ -34,6 +63,7 @@ body.light {
   --header-back-opacity: #ffffff64;
   --header-border: #2d234f;
   --color80: #00000080;
+  --text: #000;
 }
 
 body {
@@ -91,6 +121,15 @@ img {
   position: absolute;
   z-index: -1;
 }
+
+.background .blur3 {
+  width: 200px;
+  height: 200px;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 
 @media screen and (max-width: 768px) {
   .background .pattern {
@@ -328,7 +367,7 @@ img {
   width: 100%;
   top: 0;
   left: 0;
-  background-image: url("./assets/noise.png");
+  background-image: url("./assets/noise.webp");
   animation: static 3s steps(5, end) infinite;
   opacity: 0.1;
   border-radius: 20px;
@@ -394,7 +433,6 @@ img {
   }
 }
 
-
 .span1 {
   position: absolute;
   z-index: 1;
@@ -425,9 +463,35 @@ img {
   }
 }
 
+.floating {
+  animation: floating 3s ease-in-out infinite;
+  box-shadow: 0 0 10px 4px #ff72e1;
+}
+
 .span1,
 .span2,
 .span3 {
   left: -29px;
   /* animation: floating 3s ease-in-out infinite; */
+}
+
+.load {
+  position: relative;
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load89234 0.7s infinite;
+  font-size: 0;
+}
+
+@keyframes load89234 {
+  100% {
+    background-position: -100% 0;
+  }
 }

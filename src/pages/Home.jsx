@@ -1,18 +1,23 @@
-import { Boxes } from "../comps/Boxes";
 import { Header } from "../comps/Header";
 import MouseShadow from "../comps/MouseShadow";
-import Tornado from "../comps/Tornado";
+import { Footer } from "../sections/Footer";
+import Projects from "../sections/Projects";
+import Stack from "../sections/Stack";
 import { Welcome } from "../sections/Welcome";
-
+// import {FpsView} from "react-fps";
 
 export function Home() {
+
     return (
-        <div>
+        <>
             <Header />
             <Welcome />
-            <Boxes />
+            <Stack />
+            <Projects />
+            {/* <FpsView /> */}
             <MouseShadow />
-            <Tornado />
-        </div>
+            <Footer />
+
+        </>
     );
 }

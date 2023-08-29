@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 //Welcome.jsx
+import { Boxes } from "../comps/Boxes";
 
 const niceTextStyle = "tracking-tight inline font-semibold from-[#FF72E1] to-[#F54C7A] bg-clip-text text-transparent bg-gradient-to-b"
 
@@ -39,8 +40,8 @@ export const Welcome = () => {
                                 Sergio Acosta
                             </h1>
                         </div>
-                        <div className="flex flex-col h-full">
-                            <img src="./sergio.jpeg" alt="Sergio Acosta" className="rounded-[50px] aspect-square object-cover pb-0 md:pb-[5px] mt-[20px] md:mt-[0px]
+                        <div className="flex flex-col h-full load pb-0 md:mb-[5px] mt-[20px] md:mt-[0px] rounded-[50px]">
+                            <img src="./sergio.webp" alt="Sergio Acosta" className="rounded-[50px] aspect-square object-cover 
                             transition-all duration-150 w-[200px] h-[200px] md:w-full md:h-[300px] noselect
                             " />
                         </div>
@@ -48,6 +49,8 @@ export const Welcome = () => {
                     
                 </div>
             </div>
+            <Boxes />
+
         </>
     );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import getWeather from "../services/getWeather"
+import formattedDate from "../utils/formattedDate"
 
 /* eslint-disable react/prop-types */
 const Weather = ({ actual = 1 }) => {
@@ -20,7 +21,7 @@ const Weather = ({ actual = 1 }) => {
 
     const [actualSub, setActualSub] = useState(actual)
     const [weather, setWeather] = useState(weathers[actual])
-    const [time, setTime] = useState(`${new Date().getHours()}:${new Date().getMinutes()}`)
+    const [time, setTime] = useState(formattedDate(new Date()))
 
     useEffect(() => {
         getWeather({ 
@@ -31,16 +32,20 @@ const Weather = ({ actual = 1 }) => {
     }, [actualSub])
 
     useEffect(() => {
+        setActualSub(actual)
+    }, [actual])
+
+    useEffect(() => {
         const interval = setInterval(() => {
             const date = new Date()
-            setTime(`${date.getHours()}:${date.getMinutes()}`)
+            const finalDate = formattedDate(date)
+            setTime(finalDate)
         }, 1000)
         return () => clearInterval(interval)
     }, [])
 
 
     const handleClicked = () => {
-        console.log("clicked");
         setActualSub(actualSub => {
             if (actualSub >= 1) {
                 return 0
@@ -48,7 +53,6 @@ const Weather = ({ actual = 1 }) => {
                 return actualSub + 1
             }
         })
-        console.log(actualSub);
     }
 
 
